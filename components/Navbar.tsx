@@ -12,7 +12,7 @@ function Nav() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
   return (
-    <header className="px-4 lg:px-12 md:py-8">
+    <header className="px-4 lg:px-12 md:py-4 bg-white backdrop-blur-sm border-slate-200">
       <nav className="flex items-center justify-between">
         <Image
           src="/images/logo-fazmi.png"
@@ -20,7 +20,7 @@ function Nav() {
           width={180}
           height={180}
         />
-        <ul className="flex-1 flex justify-end items-center gap-6 max-lg:hidden ">
+        <ul className="flex-1 flex justify-end items-center gap-6 max-lg:hidden text-slate-500 ">
           {links.map((item, index) => (
             <li key={index}>
               <Link
@@ -46,15 +46,15 @@ function Nav() {
       </nav>
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-40 z-20"
+          className="fixed inset-0 bg-white bg-opacity-40 z-20"
           onClick={handleToggleMobileMenu}
         >
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center ">
             <ul
               id="mobileMenu"
-              className=" mt-20 w-[80%] bg-black px-4 py-4 flex flex-col gap-6 rounded-lg shadow-md"
+              className=" mt-12 md:mt-20 w-[80%] bg-black px-4 py-4 flex flex-col gap-6 rounded-lg shadow-md"
             >
-              <div className="flex flex-col gap-6 border-b-2 border-gray py-4 px-4 items-center text-white">
+              <div className="flex flex-col gap-6 border-b-2 border-gray py-4 px-4 items-center text-white ">
                 {links.map((item, index) => (
                   <li key={index}>
                     <Link

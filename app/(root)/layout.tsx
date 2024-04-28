@@ -3,11 +3,11 @@ import React from "react";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <main className="max-container">
+    <>
       <Navbar />
-      {children}
+      <main className="max-container">{children}</main>
       Footer
-    </main>
+    </>
   );
 };
 

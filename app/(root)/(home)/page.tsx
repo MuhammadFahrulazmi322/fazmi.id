@@ -1,9 +1,14 @@
-import React from 'react'
+import Halloffame from "@/components/Halloffame";
+import Hero from "@/components/Hero";
+import React from "react";
 
-const Page = () => {
+const Home = () => {
   return (
-    <div>Page</div>
-  )
-}
+    <>
+      <Hero />
+      <Halloffame/>
+    </>
+  );
+};
 
-export default Page
+export default Home;
