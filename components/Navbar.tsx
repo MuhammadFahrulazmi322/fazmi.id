@@ -12,7 +12,7 @@ function Nav() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
   return (
-    <header className="px-4 lg:px-12 md:py-4 bg-white backdrop-blur-sm border-slate-200">
+    <header className="px-4 lg:px-12 md:py-4 bg-transparent backdrop-blur-sm border-slate-200 fixed top-0 z-50 w-full">
       <nav className="flex items-center justify-between">
         <Image
           src="/images/logo-fazmi.png"

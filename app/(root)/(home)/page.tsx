@@ -1,5 +1,8 @@
+import AllProjects from "@/components/AllProjects";
+import Contact from "@/components/Contact";
 import Halloffame from "@/components/Halloffame";
 import Hero from "@/components/Hero";
+import Skills from "@/components/Skills";
 import React from "react";
 
 const Home = () => {
@@ -7,6 +10,9 @@ const Home = () => {
     <>
       <Hero />
       <Halloffame/>
+      <AllProjects/>
+      <Skills/>
+      <Contact/>
     </>
   );
 };

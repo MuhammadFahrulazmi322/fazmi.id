@@ -1,26 +1,53 @@
+"use client";
 import Image from "next/image";
 import React from "react";
+import Typewriter from "typewriter-effect";
+import {motion} from "framer-motion"
 
 const Hero = () => {
+
+  const scaleVariants = {
+    whileinView: {
+      scale: [0, 1],
+      opacity: [0, 1],
+      transition: {
+        duration: 1,
+        ease: "easeInOut",
+      },
+    },
+  };
   return (
     <>
-      <div className="flex flex-col lg:flex-row justify-center items-center  xl:min-h-screen pb-20">
-        <div className="gap-y-8 flex flex-col m-4 flex-start">
-          <div className=" shadow-lg shadow-black-200 bg-slate-200 p-4 lg:p-4 xl:p-8 md:max-w-md rounded-l-xl rounded-tr-xl font-bold text-right flex flex-col gap-4">
-            <p className="text-sm md:text-base">
-              HI, I am Muhammad Fahrul Azmi Husni
+      <motion.div
+        whileInView={{ x: [-100, 0], opacity: [0, 1] }}
+        transition={{ duration: 0.5 }}
+      
+      className="flex flex-col lg:flex-row justify-center items-center mt-20  xl:min-h-screen pb-20">
+        <div className="gap-y-8 flex flex-col m-4 flex-start max-w-[510px] bg-transparent">
+          <div className=" shadow-lg shadow-black-200 bg-slate-200 p-4 lg:p-4 xl:p-8  rounded-l-xl rounded-tr-xl font-bold text-right flex flex-col gap-4">
+            <p className="text-sm md:text-xl">
+            👋 Hi, I am Muhammad Fahrul Azmi Husni
             </p>
             <p className="text-sm md:text-base">Frontend Developer</p>
           </div>
-          <div className=" bg-slate-200 p-2 lg:p-8 rounded-l-xl rounded-tr-xl text-5xl font-normal md:max-w-md text-right leading-normal">
-            <p className="text-sm md:text-base">
-              Front-end and Next JS Specialist. For the past 4 years, I’ve been
-              working with request client and Klinik Gigi Mentari to build great
-              software.
-            </p>
+          <div className=" bg-slate-200 text-red-400 p-2 lg:p-8 rounded-xl text-sm md:text-base font-normal text-right leading-normal">
+            <Typewriter
+                options={{
+                  strings: [
+                  ' Front-end and Next JS Specialist', 
+                  ' 4 Years Experience', 
+                  ' I’ve been working with request client and Klinik Gigi Mentari to build great software'
+                ],
+                  autoStart: true,
+                  loop: true,
+                }}
+            />
           </div>
         </div>
-        <div className="flex flex-row xl:px-12 lg:flex-col lg:gap-y-4 gap-2 justify-center items-center m-4">
+        <motion.div
+        variants={scaleVariants}
+        whileInView={scaleVariants.whileinView}
+        className="flex flex-row xl:px-12 lg:flex-col lg:gap-y-4 gap-2 justify-center items-center m-4">
           <div className="p-2 lg:p-4 bg-white rounded-full lg:relative lg:drop-shadow-xl lg:translate-x-20">
             <Image
               src="/images/nextjs.svg"
@@ -56,18 +83,20 @@ const Hero = () => {
               height={48}
             />
           </div>
-        </div>
+        </motion.div>
 
-        <div className="flex items-center justify-center">
+        <div
+        
+        className="flex items-center justify-center">
           <Image
             src="/images/fahrul.png"
             alt="Fazmi Dev"
-            width={600}
-            height={600}
+            width={400}
+            height={400}
             className=""
           />
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };
