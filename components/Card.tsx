@@ -9,14 +9,16 @@ const Card = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         transition={{ type: "spring", stiffness: 400, damping: 17 }}
-        className="flex flex-col gap-y-4 bg-white  shadow-2xl p-4 rounded-lg"
+        className="flex flex-col gap-y-4 bg-white  shadow-2xl p-4 rounded-lg "
       >
+        <div className="flex justify-center">
         <Image
           src="/images/short-url.png"
           alt="card"
           width={400}
           height={400}
         />
+        </div>
         <div className="flex flex-row justify-left py-2 lg: lg:-translate-y-20 lg:translate-x-5 gap-x-1.5">
           {/* {Techstack} */}
           <div className="p-2 bg-white rounded-full  lg:drop-shadow-xl flex items-center">

@@ -23,12 +23,12 @@ const Hero = () => {
         transition={{ duration: 0.5 }}
       
       className="flex flex-col lg:flex-row justify-center items-center mt-20  xl:min-h-screen pb-20">
-        <div className="gap-y-8 flex flex-col m-4 flex-start max-w-[510px] bg-transparent">
+        <div className="gap-y-8 flex flex-col m-4 flex-start md:max-w-[510px] 2xl:max-w-full bg-transparent">
           <div className=" shadow-lg shadow-black-200 bg-slate-200 p-4 lg:p-4 xl:p-8  rounded-l-xl rounded-tr-xl font-bold text-right flex flex-col gap-4">
-            <p className="text-sm md:text-xl">
+            <p className="text-sm md:text-xl 2xl:text-4xl">
             👋 Hi, I am Muhammad Fahrul Azmi Husni
             </p>
-            <p className="text-sm md:text-base">Frontend Developer</p>
+            <p className="text-sm md:text-base 2xl:text-2xl">Frontend Developer</p>
           </div>
           <div className=" bg-slate-200 text-red-400 p-2 lg:p-8 rounded-xl text-sm md:text-base font-normal text-right leading-normal">
             <Typewriter
@@ -40,6 +40,9 @@ const Hero = () => {
                 ],
                   autoStart: true,
                   loop: true,
+                  wrapperClassName: 'custom-typewriter',
+                  cursorClassName: 'custom-cursor',
+                  delay: 50,
                 }}
             />
           </div>
@@ -93,7 +96,7 @@ const Hero = () => {
             alt="Fazmi Dev"
             width={400}
             height={400}
-            className=""
+            className="2xl:w-[600px]"
           />
         </div>
       </motion.div>
@@ -102,3 +105,4 @@ const Hero = () => {
 };
 
 export default Hero;
+

@@ -73,6 +73,9 @@
     body {
       @apply bg-background text-foreground;
     }
+    .custom-typewriter{
+      @apply 2xl:text-xl
+    }
   }
 
   *{
@@ -89,3 +92,5 @@
     }
     
   }
+
+  

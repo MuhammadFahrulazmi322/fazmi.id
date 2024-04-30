@@ -24,7 +24,7 @@ function Nav() {
           {links.map((item, index) => (
             <li key={index}>
               <Link
-                href="#"
+                href={`#${item.replace(" ", "").toLowerCase() === "hallof fame" ? "halloffame" : item.replace(" ", "").toLowerCase()}`} // Mengubah href agar mengarah ke id yang sesuai dengan nama link
                 className="text-md uppercase hover:text-black font-medium"
               >
                 {item}
@@ -58,7 +58,7 @@ function Nav() {
                 {links.map((item, index) => (
                   <li key={index}>
                     <Link
-                      href="#"
+                      href={`#${item.replace(" ", "").toLowerCase() === "hallof fame" ? "halloffame" : item.replace(" ", "").toLowerCase()}`} 
                       className="text-sm  hover:text-black font-medium"
                     >
                       {item}

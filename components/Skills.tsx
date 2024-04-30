@@ -21,30 +21,26 @@ const Skills = () => {
     { name: 'Netbeans', image: '/images/netbeans.svg' },
     { name: 'React Native', image: '/images/react-native.svg' },
     { name: 'Framer', image: '/images/framer.svg' },
-
-
-
-
-
-    
     
   ];
 
   return (
     <motion.section
-      whileInView={{ y: [100, 0], opacity: [0, 1] }}
-      transition={{ duration: 0.5 }}
-      className="bg-blue-300/20 py-4 md:py-8 flex flex-col justify-center items-center"
-    >
-      <div className="font-bold">
-        <h1 className=" text-lg lg:text-3xl text-center ">
-          Skills
+    whileInView={{ y: [100, 0], opacity: [0, 1] }}
+    transition={{ duration: 0.5 }}
+    className="bg-blue-300/20 py-16 md:py-12 flex flex-col gap-y-4  lg:gap-y-12"
+  >
+    <div className="font-bold" id='skills'>
+      <h1 className=" text-xl lg:text-3xl text-center " 
+        
+      >
+        Skills
         </h1>
       </div>
 
       <div className="p-8 lg:px-48 items-center grid grid-cols-4 lg:grid-cols-6  gap-12">
         {skills.map((skill, index) => (
-          <div key={index} className='flex flex-col gap-2 items-center justify-center'>
+          <div key={index} className='flex flex-col gap-2 items-center justify-center '>
             <Image
               src={skill.image}
               alt={skill.name}
