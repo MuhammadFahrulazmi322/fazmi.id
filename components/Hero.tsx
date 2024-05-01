@@ -23,9 +23,9 @@ const Hero = () => {
         transition={{ duration: 0.5 }}
       
       className="flex flex-col lg:flex-row justify-center items-center mt-20  xl:min-h-screen pb-20">
-        <div className="gap-y-8 flex flex-col m-4 flex-start md:max-w-[510px] 2xl:max-w-full bg-transparent">
+        <div className="gap-y-8 flex flex-col m-4 flex-start md:max-w-[520px] 2xl:max-w-full bg-transparent">
           <div className=" shadow-lg shadow-black-200 bg-slate-200 p-4 lg:p-4 xl:p-8  rounded-l-xl rounded-tr-xl font-bold text-right flex flex-col gap-4">
-            <p className="text-sm md:text-xl 2xl:text-4xl">
+            <p className="text-sm md:text-xl 2xl:text-3xl">
             👋 Hi, I am Muhammad Fahrul Azmi Husni
             </p>
             <p className="text-sm md:text-base 2xl:text-2xl">Frontend Developer</p>
@@ -36,7 +36,8 @@ const Hero = () => {
                   strings: [
                   ' Front-end and Next JS Specialist', 
                   ' 4 Years Experience', 
-                  ' I’ve been working with request client and Klinik Gigi Mentari to build great software'
+                  ' I’ve been working with request client ',
+                  'And working at Klinik Gigi Mentari to build great software'
                 ],
                   autoStart: true,
                   loop: true,

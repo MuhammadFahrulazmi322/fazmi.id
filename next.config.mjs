@@ -2,6 +2,7 @@
 const nextConfig = {
   images: {
     unoptimized: true,
+    domains: ["cdn.sanity.io"],
   },
   webpack(config) {
     config.module.rules.push({
