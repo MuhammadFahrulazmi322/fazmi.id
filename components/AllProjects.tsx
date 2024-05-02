@@ -53,7 +53,11 @@ const AllProjects = async () => {
               image={resource.image}
               slug={resource.slug.current}
               halloffame={resource.halloffame}
-              techStack={resource.techStack}
+              techStack1={resource.techStack1}
+              techStack2={resource.techStack2}
+              techStack3={resource.techStack3}
+              techStack4={resource.techStack4}
+              techStack5={resource.techStack5}
               livesite={resource.livesite}
               github={resource.github}
             />

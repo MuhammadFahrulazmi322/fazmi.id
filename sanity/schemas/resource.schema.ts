@@ -26,29 +26,44 @@ const schema = {
       validation: (Rule: any) => Rule.required(),
     },
     {
-      name: "techStack",
-      type: "array",
-      title: "Tech Stack",
-      of: [
-        {
-          type: "object",
-          fields: [
-            {
-              name: "name",
-              type: "string",
-              title: "Name",
-            },
-            {
-              name: "image",
-              type: "image",
-              title: "Upload Image",
-              options: {
-                hotspot: true,
-              },
-            },
-          ],
-        },
-      ],
+      name: "techStack1",
+      type: "image",
+      title: "Tech Stack 1",
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: "techStack2",
+      type: "image",
+      title: "Tech Stack 2",
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: "techStack3",
+      type: "image",
+      title: "Tech Stack 3",
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: "techStack4",
+      type: "image",
+      title: "Tech Stack 4",
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: "techStack5",
+      type: "image",
+      title: "Tech Stack 5",
+      options: {
+        hotspot: true,
+      },
     },
     {
       name: "image",

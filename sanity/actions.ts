@@ -24,7 +24,11 @@ export const getResources = async (params: GetResourcesParams) => {
             "image": image.asset->url,
             slug,
             halloffame,
-            techStack,
+            "techStack1" : techStack1.asset->url,
+            "techStack2" : techStack2.asset->url,
+            "techStack3" : techStack3.asset->url,
+            "techStack4" : techStack4.asset->url,
+            "techStack5" : techStack5.asset->url,
             livesite,
             github,
         }`
