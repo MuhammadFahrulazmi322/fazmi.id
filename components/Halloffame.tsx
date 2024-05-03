@@ -15,9 +15,9 @@ const Halloffame = async () => {
       <>
         <div className="p-8 mx-auto flex flex-col lg:flex-row gap-12 ">
           {halloffameResources?.length > 0 ? (
-            halloffameResources?.map((resource: any) => (
+            halloffameResources?.map((resource: any, index: number) => (
               <Card
-                key={resource._id}
+                key={`${resource._id}-${index}`}
                 id={resource._id}
                 title={resource.title}
                 description={resource.description}

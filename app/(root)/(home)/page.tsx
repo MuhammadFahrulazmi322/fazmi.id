@@ -18,7 +18,6 @@ import { getResources } from "@/sanity/actions";
 import Filter from "@/components/Filter";
 import Card from "@/components/Card";
 
-
 interface Props {
   searchParams: { [key: string]: string | undefined };
 }
@@ -65,10 +64,10 @@ const Home = async ({ searchParams }: Props) => {
         <Filter />
         <div className="p-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-12 mx-auto">
           {resources?.length > 0 ? (
-            resources?.map((resource: any) => (
+            resources?.map((resource: any, index: number) => (
               <Card
                 id={resource._id}
-                key={resource._id}
+                key={`${resource._id}-${index}`}
                 title={resource.title}
                 description={resource.description}
                 category={resource.category}

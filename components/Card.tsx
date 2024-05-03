@@ -51,17 +51,14 @@ const Card = ({
   };
 
   return (
-    <div
-      className="flex flex-row"
-      onMouseEnter={handleHover}
-      onMouseLeave={handleHover}
-      key={id}
-    >
+    <div key={`${id}-${slug}`}>
       <motion.div
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         transition={{ type: "spring", stiffness: 400, damping: 17 }}
-        className="flex flex-col gap-y-4 bg-white  shadow-2xl lg:px-4 py-4 md:py-0 rounded-lg max-w-[400px] "
+        className="flex flex-col gap-y-4 bg-white  shadow-2xl lg:px-4 md:py-0 rounded-lg max-w-[400px] "
+        onMouseEnter={handleHover}
+        onMouseLeave={handleHover}
       >
         <div className="flex justify-center relative">
           <Image
@@ -69,51 +66,61 @@ const Card = ({
             alt={title}
             width={400}
             height={400}
-            className={`md:max-w-[400px] rounded-tr-lg rounded-tl-lg ${hovered ? "contrast-[.70]" : "contrast-[.95]"}`}
+            className={`md:max-w-[400px] rounded-tr-lg rounded-tl-lg ${hovered ? "brightness-50" : "brightness-70"}`}
+            key={`${id}-${slug}-image`} // Unique key for image
           />
         </div>
-        <div
-          className={`${hovered ? "block" : "hidden"} absolute translate-x-[100px] translate-y-[90px] md:translate-x-[140px] md:translate-y-[120px] lg:translate-x-[120px] lg:translate-y-[100px] flex gap-x-6`}
-        >
-          {github || livesite ? (
-            <>
+
+        {github || livesite ? (
+          <div
+            className={`${hovered ? "block" : "hidden"} py-4 absolute right-9 flex gap-x-6`}
+          >
+            {github ? (
               <motion.div
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 className="cursor-pointer"
+                key={`${id}-github`} // Unique key for GitHub link
               >
                 <Link href={github} target="_blank" rel="noopener noreferrer">
                   <Image
                     src="icons/github.svg"
                     alt="GitHub Icon"
-                    width={48}
-                    height={48}
+                    width={32}
+                    height={32}
+                    key={`${id}-github`} // Unique key for GitHub link
                   />
                 </Link>
               </motion.div>
+            ) : (
+              <></>
+            )}
+            {livesite ? (
               <motion.div
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 className="cursor-pointer"
+                key={`${id}-livesite`} // Unique key for Live Site link
               >
-                <Link href={livesite} target="_blank" rel="noopener noreferrer"
-                  className="bg-black bg-transparent rounded-full"
-                >
+                <Link href={livesite} target="_blank" rel="noopener noreferrer">
                   <Image
                     src="icons/site.svg"
-                    alt="Link Icon"
-                    width={48}
-                    height={48}
+                    alt="Site Icon"
+                    width={32}
+                    height={32}
+                    key={`${id}-livesite`} // Unique key for Live Site link
                   />
                 </Link>
               </motion.div>
-            </>
-          ) : (
-            <></>
-          )}
-        </div>
+            ) : (
+              <></>
+            )}
+          </div>
+        ) : (
+          <></>
+        )}
 
         <div className="flex flex-row justify-left py-2 relative lg:-translate-y-20 lg:translate-x-5 gap-x-1.5">
           {/* Displaying Techstack */}
@@ -122,14 +129,15 @@ const Card = ({
               .filter((tech) => tech)
               .map((tech, index) => (
                 <div
-                  key={index} // Change key to tech to ensure uniqueness
-                  className="p-2 bg-white rounded-full  lg:drop-shadow-xl flex items-center"
+                  key={`${id}-${index}`} // Unique key for each tech stack item
+                  className="p-2 bg-white rounded-full drop-shadow-2xl flex items-center"
                 >
                   <Image
                     src={tech} // Accessing the URL of the image from Sanity
                     alt="image techstack"
                     width={24}
                     height={24}
+                    key={`${id}-${index}`} // Unique key for each tech stack item
                   />
                 </div>
               ))}

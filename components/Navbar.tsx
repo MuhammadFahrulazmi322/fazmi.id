@@ -58,7 +58,7 @@ function Nav() {
                 {links.map((item, index) => (
                   <li key={index}>
                     <Link
-                      href={`#${item.replace(" ", "").toLowerCase() === "hallof fame" ? "halloffame" : item.replace(" ", "").toLowerCase()}`} 
+                      href={`#${item.replace(" ", "").toLowerCase() === "hallof fame" ? "halloffame" : item.replace(" ", "").toLowerCase()}`}
                       className="text-sm  hover:text-black font-medium"
                     >
                       {item}
