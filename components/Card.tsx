@@ -51,7 +51,7 @@ const Card = ({
   };
 
   return (
-    <section
+    <div
       className="flex flex-row"
       onMouseEnter={handleHover}
       onMouseLeave={handleHover}
@@ -69,48 +69,63 @@ const Card = ({
             alt={title}
             width={400}
             height={400}
-            className={`md:max-w-[400px] rounded-tr-lg rounded-tl-lg contrast-[.95] ${hovered ? "contrast-75" : "contrast-[.95]"}`}
+            className={`md:max-w-[400px] rounded-tr-lg rounded-tl-lg ${hovered ? "contrast-[.70]" : "contrast-[.95]"}`}
           />
         </div>
         <div
-          className={`${hovered ? "block" : "hidden"} relative md:translate-x-[120px] md:-translate-y-[160px] flex gap-x-4`}
+          className={`${hovered ? "block" : "hidden"} absolute translate-x-[100px] translate-y-[90px] md:translate-x-[140px] md:translate-y-[120px] lg:translate-x-[120px] lg:translate-y-[100px] flex gap-x-6`}
         >
           {github || livesite ? (
             <>
-              <Link href={github} target="_blank" rel="noopener noreferrer">
-                <img
-                  src="icons/github.svg"
-                  alt="GitHub Icon"
-                  width={48}
-                  height={48}
-                  className=""
-                />
-              </Link>
-              <Link href={livesite} target="_blank" rel="noopener noreferrer">
-                <img
-                  src="icons/site.svg"
-                  alt="Link Icon"
-                  width={48}
-                  height={48}
-                />
-              </Link>
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                className="cursor-pointer"
+              >
+                <Link href={github} target="_blank" rel="noopener noreferrer">
+                  <Image
+                    src="icons/github.svg"
+                    alt="GitHub Icon"
+                    width={48}
+                    height={48}
+                  />
+                </Link>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                className="cursor-pointer"
+              >
+                <Link href={livesite} target="_blank" rel="noopener noreferrer"
+                  className="bg-black bg-transparent rounded-full"
+                >
+                  <Image
+                    src="icons/site.svg"
+                    alt="Link Icon"
+                    width={48}
+                    height={48}
+                  />
+                </Link>
+              </motion.div>
             </>
           ) : (
             <></>
           )}
         </div>
 
-        <div className="flex flex-row justify-left py-2 lg: lg:-translate-y-20 lg:translate-x-5 gap-x-1.5">
+        <div className="flex flex-row justify-left py-2 relative lg:-translate-y-20 lg:translate-x-5 gap-x-1.5">
           {/* Displaying Techstack */}
           {techStack &&
             techStack
               .filter((tech) => tech)
               .map((tech, index) => (
                 <div
-                  key={tech} // Change key to tech to ensure uniqueness
+                  key={index} // Change key to tech to ensure uniqueness
                   className="p-2 bg-white rounded-full  lg:drop-shadow-xl flex items-center"
                 >
-                  <img
+                  <Image
                     src={tech} // Accessing the URL of the image from Sanity
                     alt="image techstack"
                     width={24}
@@ -119,14 +134,14 @@ const Card = ({
                 </div>
               ))}
         </div>
-        <div className="relative lg:-translate-y-14 flex flex-col gap-y-2">
+        <div className="relative lg:-translate-y-14 flex flex-col gap-y-4 px-4 py-4">
           <h1 className="text-xl md:text-2xl font-bold text-center">{title}</h1>
           <p className="text-sm font-medium max-w-md text-center text-slate-500">
             {description}
           </p>
         </div>
       </motion.div>
-    </section>
+    </div>
   );
 };
 

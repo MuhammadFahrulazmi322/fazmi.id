@@ -7,7 +7,15 @@ const schema = {
       name: "title",
       type: "string",
       title: "Title",
-      require,
+      validation: (Rule: any) => Rule.required(),
+    },
+    {
+      name: "image",
+      type: "image",
+      title: "Image",
+      options: {
+        hotspot: true,
+      },
       validation: (Rule: any) => Rule.required(),
     },
     {
@@ -22,7 +30,6 @@ const schema = {
       name: "description",
       type: "string",
       title: "Description",
-      require,
       validation: (Rule: any) => Rule.required(),
     },
     {
@@ -65,22 +72,13 @@ const schema = {
         hotspot: true,
       },
     },
-    {
-      name: "image",
-      type: "image",
-      title: "Image",
-      options: {
-        hotspot: true,
-      },
-      require,
-      validation: (Rule: any) => Rule.required(),
-    },
+    
     {
       name: "category",
       type: "string",
       title: "Category",
       options: {
-        list: ["All", "Landing Page", "React JS", "Next JS", "Mobile"],
+        list: ["all", "react js", "next js", "mobile"],
       },
     },
     {

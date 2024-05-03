@@ -97,7 +97,7 @@ const Hero = () => {
             alt="Fazmi Dev"
             width={400}
             height={400}
-            className="2xl:w-[600px]"
+            className="2xl:w-[600px] 2xl:h-auto"
           />
         </div>
       </motion.div>
