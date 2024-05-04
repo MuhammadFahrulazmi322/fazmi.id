@@ -33,7 +33,7 @@ const Home = async ({ searchParams }: Props) => {
       <motion.div
         whileInView={{ y: [100, 0], opacity: [0, 1] }}
         transition={{ duration: 0.5 }}
-        className="bg-blue-300/20 py-16 md:py-12 flex flex-col gap-y-4  lg:gap-y-12"
+        className="bg-blue-300/20 py-16 md:py-12 flex flex-col gap-y-4 lg:gap-y-12"
       >
         <div className="font-bold">
           <h1 className=" text-xl lg:text-3xl text-center " id="halloffame">
