@@ -1,21 +1,32 @@
-import Card from "./Card";
-import { getResources } from "@/sanity/actions";
+"use client";
 
-const Halloffame = async () => {
-  try {
-    const resources = await getResources({
-      query: "",
-      category: "",
-      page: "1",
-    });
-    const halloffameResources = resources.filter(
-      (resource: any) => resource.halloffame === true
-    );
-    return (
-      <>
+import Loading from "@/app/(root)/loading";
+import Card from "./Card";
+import useResources from "@/hooks/useResource";
+import { useEffect, useState } from "react";
+
+const Halloffame = () => {
+  const resources = useResources();
+  const [loading, setLoading] = useState(true);
+
+  const halloffameResources = resources.filter(
+    (resource: any) => resource.halloffame === true
+  );
+
+  useEffect(() => {
+    if (halloffameResources) {
+      setLoading(false);
+    }
+  }, [halloffameResources]);
+
+  return (
+    <>
+      {loading ? (
+        <Loading />
+      ) : (
         <div className="p-8 mx-auto flex flex-col lg:flex-row lg:gap-4 gap-y-12 xl:gap-12 ">
-          {halloffameResources?.length > 0 ? (
-            halloffameResources?.map((resource: any, index: number) => (
+          {halloffameResources.length > 0 ? (
+            halloffameResources.map((resource, index) => (
               <Card
                 key={`${resource._id}-${index}`}
                 id={resource._id}
@@ -38,12 +49,9 @@ const Halloffame = async () => {
             <p>No resources found.</p>
           )}
         </div>
-      </>
-    );
-  } catch (error) {
-    console.error("Error fetching resources:", error);
-    return <p>Error fetching resources.</p>;
-  }
+      )}
+    </>
+  );
 };
 
 export default Halloffame;
