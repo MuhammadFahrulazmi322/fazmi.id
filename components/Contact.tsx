@@ -28,39 +28,33 @@ const Contact: React.FC = () => {
       return;
     }
 
-    setAlertMessage(
-      "Email has been sent successfully!, I'll get back to you shortly."
-    );
-    // Clear the alert after a few seconds
-    setStatus("success");
-    setName("");
-    setEmail("");
-    setMessage("");
+    emailjs.send(serviceID, templateID, templateParams, { publicKey }).then(
+      (response) => {
+        console.log("SUCCESS!", response.status, response.text);
+        setAlertMessage("Email has been sent successfully!");
+        setStatus("success");
 
-    // emailjs
-    //   .send(serviceID, templateID, templateParams, { publicKey })
-    //   .then(
-    //     (response) => {
-    //       console.log('SUCCESS!', response.status, response.text);
-    //       setAlertMessage("Email has been sent successfully!");
-    //       // Clear the alert after a few seconds
-    //       setTimeout(() => {
-    //         setAlertMessage(null);
-    //         // Reset input fields
-    //         setName("");
-    //         setEmail("");
-    //         setMessage("");
-    //       }, 5000);
-    //     },
-    //     (err) => {
-    //       console.log('FAILED...', err);
-    //       setAlertMessage("Failed to send email. Please try again later.");
-    //       // Clear the alert after a few seconds
-    //       setTimeout(() => {
-    //         setAlertMessage(null);
-    //       }, 5000);
-    //     }
-    //   );
+        // Clear the alert after a few seconds
+        setTimeout(() => {
+          setAlertMessage(null);
+          setStatus(null);
+          // Reset input fields
+          setName("");
+          setEmail("");
+          setMessage("");
+        }, 5000);
+      },
+      (err) => {
+        console.log("FAILED...", err);
+        setAlertMessage("Failed to send email. Please try again later.");
+        setStatus("error");
+        // Clear the alert after a few seconds
+        setTimeout(() => {
+          setAlertMessage(null);
+          setStatus(null);
+        }, 5000);
+      }
+    );
   };
 
   return (
@@ -114,9 +108,11 @@ const Contact: React.FC = () => {
       </motion.section>
 
       {alertMessage && (
-        <div className="fixed md:left-8 bottom-0 right-0 mb-8 mr-8 z-20">
+        <div className="fixed max-md:left-8 bottom-0 right-0 mb-8 mr-8 z-20">
           <Alert
-            className={`flex flex-row border-2 gap-x-4 items-center ${status === "success" ? "border-green-500" : "border-red-500"}`}
+            className={`flex flex-row border-2 gap-x-4 items-center 
+            ${status === "success" ? "border-green-500" : ""} 
+            ${status === "error" ? "border-red-500" : ""}`}
           >
             <AlertCircle className="w-6 h-6" />
             <div className="flex flex-col">

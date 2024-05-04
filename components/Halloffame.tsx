@@ -13,7 +13,7 @@ const Halloffame = async () => {
     );
     return (
       <>
-        <div className="p-8 flex flex-col lg:flex-row gap-12 ">
+        <div className="p-8 mx-auto flex flex-col lg:flex-row lg:gap-4 gap-y-12 xl:gap-12 ">
           {halloffameResources?.length > 0 ? (
             halloffameResources?.map((resource: any, index: number) => (
               <Card

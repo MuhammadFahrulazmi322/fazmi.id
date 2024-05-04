@@ -56,7 +56,7 @@ const Card = ({
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         transition={{ type: "spring", stiffness: 400, damping: 17 }}
-        className="flex flex-col gap-y-4 bg-white  shadow-2xl lg:px-4 md:py-0 rounded-lg max-w-[400px] "
+        className="flex flex-col gap-y-4 bg-white  shadow-2xl lg:px-4 md:py-0 rounded-lg max-w-[300px] "
         onMouseEnter={handleHover}
         onMouseLeave={handleHover}
       >
@@ -64,8 +64,8 @@ const Card = ({
           <Image
             src={image}
             alt={title}
-            width={400}
-            height={400}
+            width={300}
+            height={300}
             className={`md:max-w-[400px] rounded-tr-lg rounded-tl-lg ${hovered ? "brightness-50" : "brightness-70"}`}
             key={`${id}-${slug}-image`} // Unique key for image
           />

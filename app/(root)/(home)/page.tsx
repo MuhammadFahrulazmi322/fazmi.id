@@ -62,7 +62,7 @@ const Home = async ({ searchParams }: Props) => {
         </div>
 
         <Filter />
-        <div className="p-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-12 mx-auto">
+        <div className="p-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-12 mx-auto">
           {resources?.length > 0 ? (
             resources?.map((resource: any, index: number) => (
               <Card
