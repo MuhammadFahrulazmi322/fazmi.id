@@ -19,7 +19,7 @@ import Contact from "@/components/Contact";
 import Halloffame from "@/components/Halloffame";
 import Hero from "@/components/Hero";
 import useResources from "@/hooks/useResource";
-import Loading from "../loading";
+import Loading from "../../loading";
 
 interface Props {
   searchParams: { [key: string]: string | undefined };
@@ -28,12 +28,45 @@ interface Props {
 const Home: React.FC<Props> = ({ searchParams }) => {
   const resources = useResources(searchParams);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const ITEMS_PER_PAGE = 6;
 
   useEffect(() => {
     if (resources) {
       setLoading(false);
     }
   }, [resources]);
+
+  const paginateData = (data: any[]) => {
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const endIndex = startIndex + ITEMS_PER_PAGE;
+    return data.slice(startIndex, endIndex);
+  };
+
+  const handleNextClick = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    setCurrentPage((prev) =>
+      Math.min(prev + 1, Math.ceil(resources.length / ITEMS_PER_PAGE))
+    );
+  };
+
+  const handlePreviousClick = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
+  };
+
+  const handlePageClick = (
+    pageNumber: number,
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <>
@@ -74,7 +107,7 @@ const Home: React.FC<Props> = ({ searchParams }) => {
             <Filter />
             <div className="p-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-12 mx-auto">
               {resources?.length > 0 ? (
-                resources?.map((resource: any, index: number) => (
+                paginateData(resources).map((resource: any, index: number) => (
                   <Card
                     key={`${resource._id}-${index}`}
                     id={resource._id}
@@ -100,16 +133,34 @@ const Home: React.FC<Props> = ({ searchParams }) => {
             <Pagination>
               <PaginationContent>
                 <PaginationItem>
-                  <PaginationPrevious href="#" />
+                  <PaginationPrevious
+                    href="#"
+                    onClick={handlePreviousClick}
+                    isActive={currentPage === 1}
+                  />
                 </PaginationItem>
+                {[
+                  ...Array(Math.ceil(resources.length / ITEMS_PER_PAGE)).keys(),
+                ].map((page) => (
+                  <PaginationItem key={page}>
+                    <PaginationLink
+                      href="#"
+                      onClick={(e) => handlePageClick(page + 1, e)}
+                      isActive={page + 1 === currentPage}
+                    >
+                      {page + 1}
+                    </PaginationLink>
+                  </PaginationItem>
+                ))}
                 <PaginationItem>
-                  <PaginationLink href="#">1</PaginationLink>
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationEllipsis />
-                </PaginationItem>
-                <PaginationItem>
-                  <PaginationNext href="#" />
+                  <PaginationNext
+                    href="#"
+                    onClick={handleNextClick}
+                    isActive={
+                      currentPage ===
+                      Math.ceil(resources.length / ITEMS_PER_PAGE)
+                    }
+                  />
                 </PaginationItem>
               </PaginationContent>
             </Pagination>

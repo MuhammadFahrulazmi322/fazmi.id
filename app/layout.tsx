@@ -24,10 +24,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body  className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          dmsans.variable
-        )}>{children}</body>
+      <body
+        className={cn(
+          "min-h-screen bg-background font-dm-sans antialiased",
+          dmsans.className
+        )}
+      >
+        {children}
+      </body>
     </html>
   );
 }

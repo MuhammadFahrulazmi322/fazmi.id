@@ -1,6 +1,6 @@
 "use client";
 
-import Loading from "@/app/(root)/loading";
+import Loading from "@/app/loading";
 import Card from "./Card";
 import useResources from "@/hooks/useResource";
 import { useEffect, useState } from "react";

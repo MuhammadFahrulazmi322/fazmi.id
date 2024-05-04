@@ -24,7 +24,7 @@ const Hero = () => {
       >
         <div className="gap-y-8 flex flex-col m-4 flex-start md:max-w-[520px] 2xl:max-w-full bg-transparent">
           <div className=" shadow-lg shadow-black-200 bg-slate-200 p-4 lg:p-4 xl:p-8  rounded-l-xl rounded-tr-xl font-bold text-right flex flex-col gap-4">
-            <p className="text-sm md:text-xl 2xl:text-3xl">
+            <p className="text-sm md:text-xl 2xl:text-3xl font-montserrat">
               👋 Hi, I am Muhammad Fahrul Azmi Husni
             </p>
             <p className="text-sm md:text-base 2xl:text-2xl">
