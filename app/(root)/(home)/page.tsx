@@ -152,11 +152,15 @@ const Home: React.FC<Props> = ({ searchParams }) => {
             ))}
             <PaginationItem>
               <PaginationNext
-                href="#"
-                onClick={handleNextClick}
-                isActive={
-                  currentPage === Math.ceil(resources.length / ITEMS_PER_PAGE)
+                onClick={
+                  resources.length > ITEMS_PER_PAGE ? handleNextClick : () => {}
                 }
+                isActive={resources.length > ITEMS_PER_PAGE}
+                className={`${
+                  resources.length > ITEMS_PER_PAGE
+                    ? "bg-blue-500 hover:bg-blue-700 hover:text-white text-white"
+                    : "bg-gray-300 hover:bg-gray-300 text-gray-500 hover:text-gray-500 cursor-not-allowed"
+                } px-4 py-2 rounded-lg`}
               />
             </PaginationItem>
           </PaginationContent>
