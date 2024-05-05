@@ -14,7 +14,8 @@ const Footer = () => {
       <div className="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-x-8 gap-y-4">
         <div className="flex flex-col gap-y-2">
           <p className="text-sm">
-            Built with Next JS, Tailwind CSS, Typescript, Sanity & EmailJS
+            Built with Next JS, Tailwind CSS, Typescript, shadcn/ui, Sanity,
+            Framer motion & EmailJS
           </p>
           <p className="text-sm">
             &copy; 2023 Muhammad Fahrul Azmi Husni. All Rights Reserved.

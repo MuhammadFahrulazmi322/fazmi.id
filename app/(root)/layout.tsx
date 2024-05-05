@@ -1,13 +1,27 @@
+"use client";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import React from "react";
+import { useEffect, useState } from "react";
+import Loading from "@/app/loading";
 
 const layout = ({ children }: { children: React.ReactNode }) => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
   return (
     <>
-      <Navbar />
-      <main >{children}</main>
-      <Footer/>
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </>
+      )}
     </>
   );
 };

@@ -39,7 +39,13 @@ const Skills = () => {
             key={index}
             className="flex flex-col gap-2 items-center justify-center "
           >
-            <Image src={skill.image} alt={skill.name} width={48} height={48} />
+            <Image
+              src={skill.image}
+              alt={skill.name}
+              width={48}
+              height={48}
+              className="w-14 h-14"
+            />
             <p className="text-center text-sm text-slate-500">{skill.name}</p>
           </div>
         ))}
