@@ -72,7 +72,7 @@ const Card = ({
 
         {github || livesite ? (
           <div
-            className={`${hovered ? "block" : "hidden"} py-4 absolute right-9 flex gap-x-6`}
+            className={`${hovered ? "block" : "hidden"} py-4 absolute right-9 flex gap-x-4 px-2 md:px-0`}
           >
             {github ? (
               <motion.div

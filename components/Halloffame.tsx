@@ -20,7 +20,7 @@ const Halloffame = () => {
   }, [halloffameResources]);
 
   return (
-    <div className="p-8 mx-auto flex flex-col lg:flex-row lg:gap-4 gap-y-12 xl:gap-12 ">
+    <div className="p-8 mx-auto flex flex-col lg:flex-row lg:gap-4 gap-y-12 xl:gap-12 " id="halloffame">
       {halloffameResources.length > 0 ? (
         halloffameResources.map((resource, index) => (
           <Card

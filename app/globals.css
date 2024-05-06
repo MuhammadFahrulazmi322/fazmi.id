@@ -75,7 +75,7 @@
       @apply bg-background text-foreground;
     }
     .custom-typewriter{
-      @apply 2xl:text-xl
+      @apply 2xl:text-xl text-sm
     }
   }
 
