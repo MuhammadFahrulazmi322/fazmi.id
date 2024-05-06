@@ -19,14 +19,13 @@ function Nav() {
           alt="Fazmi Dev"
           width={180}
           height={180}
-          className="w-40 h-14"
         />
         <ul className="flex-1 flex justify-end items-center gap-6 max-lg:hidden text-slate-500 ">
           {links.map((item, index) => (
             <li key={index}>
               <Link
                 href={`#${item.replace(" ", "").toLowerCase() === "hallof fame" ? "halloffame" : item.replace(" ", "").toLowerCase()}`}
-                className="text-md uppercase hover:text-black font-medium"
+                className="text-sm 2xl-text-base uppercase hover:text-black font-medium"
               >
                 {item}
               </Link>

@@ -33,7 +33,7 @@ const Skills = () => {
         <h1 className=" text-xl lg:text-3xl text-center ">Skills</h1>
       </div>
 
-      <div className=" max-w-xl mx-auto p-8 items-center grid grid-cols-4 lg:grid-cols-4 gap-12">
+      <div className=" max-w-xl mx-auto p-8 items-center grid grid-cols-2 lg:grid-cols-4 gap-12">
         {skills.map((skill, index) => (
           <div
             key={index}
@@ -44,7 +44,7 @@ const Skills = () => {
               alt={skill.name}
               width={48}
               height={48}
-              className="w-14 h-14"
+              className="w-8 h-8 2xl:w-12 2xl:h-12"
             />
             <p className="text-center text-sm text-slate-500">{skill.name}</p>
           </div>

@@ -54,7 +54,6 @@ const Card = ({
     <div key={`${id}-${slug}`}>
       <motion.div
         whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
         transition={{ type: "spring", stiffness: 400, damping: 17 }}
         className="flex flex-col gap-y-4 bg-white  shadow-2xl lg:px-4 md:py-0 rounded-lg max-w-[300px] "
         onMouseEnter={handleHover}
@@ -78,7 +77,6 @@ const Card = ({
             {github ? (
               <motion.div
                 whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 className="cursor-pointer"
                 key={`${id}-github`} // Unique key for GitHub link
@@ -99,7 +97,6 @@ const Card = ({
             {livesite ? (
               <motion.div
                 whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 className="cursor-pointer"
                 key={`${id}-livesite`} // Unique key for Live Site link
@@ -122,7 +119,7 @@ const Card = ({
           <></>
         )}
 
-        <div className="flex flex-row justify-left py-2 relative lg:-translate-y-20 lg:translate-x-5 gap-x-1.5">
+        <div className="flex flex-row justify-left py-2 px-4 md:px-0 relative lg:-translate-y-20 lg:translate-x-0 gap-x-1.5">
           {/* Displaying Techstack */}
           {techStack &&
             techStack
@@ -130,7 +127,7 @@ const Card = ({
               .map((tech, index) => (
                 <div
                   key={`${id}-${index}`} // Unique key for each tech stack item
-                  className="p-2 bg-white rounded-full drop-shadow-2xl flex items-center"
+                  className=" p-2 bg-white rounded-full drop-shadow-2xl flex items-center"
                 >
                   <Image
                     src={tech} // Accessing the URL of the image from Sanity
@@ -142,8 +139,8 @@ const Card = ({
                 </div>
               ))}
         </div>
-        <div className="relative lg:-translate-y-14 flex flex-col gap-y-4 px-4 py-4">
-          <h1 className="text-xl md:text-2xl font-bold text-center">{title}</h1>
+        <div className="relative lg:-translate-y-14 flex flex-col gap-y-4 px-4 py-4 mb-4 md:mb-0">
+          <h1 className="text-lg md:text-xl font-bold text-center">{title}</h1>
           <p className="text-sm font-medium max-w-md text-center text-slate-500">
             {description}
           </p>

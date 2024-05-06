@@ -1,35 +1,18 @@
-"use client";
-import React, { useState } from "react";
+// Filter.tsx
+
+import React from "react";
 import { Button } from "./ui/button";
-import { formUrlQuery } from "@/sanity/utils";
-import { useSearchParams, useRouter } from "next/navigation";
-const Filter = () => {
-  const [active, setActive] = useState("All");
-  const searchParms = useSearchParams();
-  const router = useRouter();
+
+interface Props {
+  selectedCategory: string;
+  onCategoryChange: (category: string) => void;
+}
+
+const Filter: React.FC<Props> = ({ selectedCategory, onCategoryChange }) => {
   const links = ["All", "React JS", "Next JS", "Mobile"];
 
   const handleFilter = (link: string) => {
-    let newUrl = "";
-
-    if (active === link) {
-      setActive("");
-
-      newUrl = formUrlQuery({
-        params: searchParms.toString(),
-        keysToRemove: ["category"],
-      });
-    } else {
-      setActive(link);
-
-      newUrl = formUrlQuery({
-        params: searchParms.toString(),
-        key: "category",
-        value: link.toLowerCase(),
-      });
-    }
-
-    router.push(newUrl, { scroll: false });
+    onCategoryChange(link); // category to home
   };
 
   return (
@@ -39,7 +22,7 @@ const Filter = () => {
           key={index}
           variant="outline"
           size="lg"
-          className={`${active === link ? "bg-black text-white" : ""} hover:bg-black hover:text-white`}
+          className={`${selectedCategory === link ? "bg-black text-white" : ""} hover:bg-black hover:text-white`}
           onClick={() => handleFilter(link)}
         >
           {link}

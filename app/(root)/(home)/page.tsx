@@ -18,20 +18,26 @@ import Halloffame from "@/components/Halloffame";
 import Hero from "@/components/Hero";
 import useResources from "@/hooks/useResource";
 
-interface Props {
-  searchParams: { [key: string]: string | undefined };
-}
-
-const Home: React.FC<Props> = ({ searchParams }) => {
-  const resources = useResources(searchParams);
+const Home = () => {
+  const resources = useResources();
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   const ITEMS_PER_PAGE = 6;
   const exploreAllRef = useRef<HTMLHeadingElement>(null);
 
+  const filteredResources = resources.filter((resource: any) => {
+    if (selectedCategory.toLowerCase() === "all") {
+      return true;
+    } else {
+      return resource.category === selectedCategory.toLowerCase();
+    }
+  });
+
   const paginateData = (data: any[]) => {
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
     const endIndex = startIndex + ITEMS_PER_PAGE;
+
     return data.slice(startIndex, endIndex);
   };
 
@@ -61,14 +67,19 @@ const Home: React.FC<Props> = ({ searchParams }) => {
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
   ) => {
     e.preventDefault();
+
     setCurrentPage(pageNumber);
     scrollIntoView();
+  };
+
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category);
+    setCurrentPage(1);
   };
 
   return (
     <>
       <Hero />
-
       <motion.div
         whileInView={{ y: [100, 0], opacity: [0, 1] }}
         transition={{ duration: 0.5 }}
@@ -102,28 +113,33 @@ const Home: React.FC<Props> = ({ searchParams }) => {
             </span>
           </h1>
         </div>
-        <Filter />
+        <Filter
+          selectedCategory={selectedCategory}
+          onCategoryChange={handleCategoryChange}
+        />
         <div className="p-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-12 mx-auto">
-          {resources?.length > 0 ? (
-            paginateData(resources).map((resource: any, index: number) => (
-              <Card
-                key={`${resource._id}-${index}`}
-                id={resource._id}
-                title={resource.title}
-                description={resource.description}
-                category={resource.category}
-                image={resource.image}
-                slug={resource.slug.current}
-                halloffame={resource.halloffame}
-                techStack1={resource.techStack1}
-                techStack2={resource.techStack2}
-                techStack3={resource.techStack3}
-                techStack4={resource.techStack4}
-                techStack5={resource.techStack5}
-                livesite={resource.livesite}
-                github={resource.github}
-              />
-            ))
+          {filteredResources.length > 0 ? (
+            paginateData(filteredResources).map(
+              (resource: any, index: number) => (
+                <Card
+                  key={`${resource._id}-${index}`}
+                  id={resource._id}
+                  title={resource.title}
+                  description={resource.description}
+                  category={resource.category}
+                  image={resource.image}
+                  slug={resource.slug.current}
+                  halloffame={resource.halloffame}
+                  techStack1={resource.techStack1}
+                  techStack2={resource.techStack2}
+                  techStack3={resource.techStack3}
+                  techStack4={resource.techStack4}
+                  techStack5={resource.techStack5}
+                  livesite={resource.livesite}
+                  github={resource.github}
+                />
+              )
+            )
           ) : (
             <p>No resource found</p>
           )}
@@ -138,7 +154,9 @@ const Home: React.FC<Props> = ({ searchParams }) => {
               />
             </PaginationItem>
             {[
-              ...Array(Math.ceil(resources.length / ITEMS_PER_PAGE)).keys(),
+              ...Array(
+                Math.ceil(filteredResources.length / ITEMS_PER_PAGE)
+              ).keys(),
             ].map((page) => (
               <PaginationItem key={page}>
                 <PaginationLink
@@ -153,11 +171,13 @@ const Home: React.FC<Props> = ({ searchParams }) => {
             <PaginationItem>
               <PaginationNext
                 onClick={
-                  resources.length > ITEMS_PER_PAGE ? handleNextClick : () => {}
+                  filteredResources.length > ITEMS_PER_PAGE
+                    ? handleNextClick
+                    : () => {}
                 }
-                isActive={resources.length > ITEMS_PER_PAGE}
+                isActive={filteredResources.length > ITEMS_PER_PAGE}
                 className={`${
-                  resources.length > ITEMS_PER_PAGE
+                  filteredResources.length > ITEMS_PER_PAGE
                     ? "bg-blue-500 hover:bg-blue-700 hover:text-white text-white"
                     : "bg-gray-300 hover:bg-gray-300 text-gray-500 hover:text-gray-500 cursor-not-allowed"
                 } px-4 py-2 rounded-lg`}
