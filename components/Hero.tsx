@@ -21,15 +21,14 @@ const Hero = () => {
         whileInView={{ x: [-100, 0], opacity: [0, 1] }}
         transition={{ duration: 0.5 }}
         className="flex flex-col lg:flex-row justify-center items-center mt-20  xl:min-h-screen pb-20 "
+        id="home"
       >
-        <div className="gap-y-8 flex flex-col m-4 flex-start max-w-full md:max-w-[640px] 2xl:max-w-full">
+        <div className="gap-y-8 flex flex-col m-4 flex-start lg:max-w-[720px] 2xl:max-w-full">
           <div className="z-5 shadow-lg shadow-black-200 bg-slate-200 p-4 lg:p-4 xl:p-8  rounded-l-xl rounded-tr-xl font-bold text-right flex flex-col gap-4 ">
-            <p className="text-sm md:text-xl 2xl:text-3xl font-montserrat">
-              👋 Hi, I am Muhammad Fahrul{" "} 
-              <br className="block xl:hidden"/>
-              Azmi Husni
+            <p className="text-sm md:text-xl 2xl:text-2xl font-montserrat">
+              👋 Hi, I am Muhammad Fahrul Azmi Husni
             </p>
-            <p className="text-sm md:text-base 2xl:text-2xl">
+            <p className="text-sm md:text-base 2xl:text-xl">
               Frontend Developer
             </p>
           </div>
@@ -55,7 +54,7 @@ const Hero = () => {
         <motion.div
           variants={scaleVariants}
           whileInView={scaleVariants.whileinView}
-          className="flex flex-row xl:px-12 px-8 lg:flex-col lg:gap-y-4 gap-2 justify-center items-center m-4"
+          className="flex flex-row xl:px-12 px-8 lg:flex-col lg:gap-y-2 gap-2 justify-center items-center m-4"
         >
           <div className=" p-2 lg:p-4 bg-white rounded-full lg:relative lg:drop-shadow-xl lg:translate-x-20">
             <Image
@@ -63,7 +62,7 @@ const Hero = () => {
               alt="nextjs"
               width={48}
               height={48}
-              className="w-12 h-12 lg:w-8 lg:h-8"
+              className="w-8 h-8 2xl:w-10 2xl:h-10"
             />
           </div>
           <div className="p-2 lg:p-4 bg-white rounded-full  lg:relative lg:drop-shadow-xl lg:translate-x-12">
@@ -72,7 +71,7 @@ const Hero = () => {
               alt="react"
               width={48}
               height={48}
-              className="w-12 h-12 lg:w-8 lg:h-8 "
+              className="w-8 h-8 2xl:w-10 2xl:h-10 "
             />
           </div>
           <div className="p-2 lg:p-4 bg-white rounded-full  lg:relative lg:drop-shadow-xl lg:translate-x-6">
@@ -81,7 +80,7 @@ const Hero = () => {
               alt="typescript"
               width={48}
               height={48}
-              className="w-12 h-12 lg:w-8 lg:h-8 "
+              className="w-8 h-8 2xl:w-10 2xl:h-10 "
             />
           </div>
           <div className="p-2 lg:p-4 bg-white rounded-full  lg:relative lg:drop-shadow-xl lg:translate-x-12">
@@ -90,7 +89,7 @@ const Hero = () => {
               alt="tailwind"
               width={48}
               height={48}
-              className="w-12 h-12 lg:w-8 lg:h-8 "
+              className="w-8 h-8 2xl:w-10 2xl:h-10 "
             />
           </div>
           <div className="p-2 lg:p-4 bg-white rounded-full  lg:relative lg:drop-shadow-xl lg:translate-x-20">
@@ -99,7 +98,7 @@ const Hero = () => {
               alt="redux"
               width={48}
               height={48}
-              className="w-12 h-12 lg:w-8 lg:h-8 "
+              className="w-8 h-8 2xl:w-10 2xl:h-10 "
             />
           </div>
         </motion.div>
@@ -108,9 +107,9 @@ const Hero = () => {
           <Image
             src="/images/fahrul.png"
             alt="Fazmi Dev"
-            width={400}
-            height={400}
-            className="2xl:w-[600px] 2xl:h-auto"
+            width={300}
+            height={300}
+            className="2xl:w-[600px] 2xl:h-auto lg:w-300px"
             priority
           />
         </div>
