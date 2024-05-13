@@ -13,6 +13,17 @@ const Contact: React.FC = () => {
   const [status, setStatus] = useState<string | null>(null);
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // check if all fields are filled
+  if (!name || !email || !message) {
+    setAlertMessage("Please fill in all fields."); // Tampilkan pesan kesalahan
+    setStatus("error");
+    // Clear the alert after a few seconds
+    setTimeout(() => {
+      setAlertMessage(null);
+      setStatus(null);
+    }, 5000);
+    return; //stop execution
+  }
     const templateParams = {
       from_name: name,
       email_id: email,
