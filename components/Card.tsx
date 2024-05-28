@@ -55,7 +55,7 @@ const Card = ({
       <motion.div
         whileHover={{ scale: 1.1 }}
         transition={{ type: "spring", stiffness: 400, damping: 17 }}
-        className="flex flex-col gap-y-4 bg-white  shadow-2xl lg:px-4 md:py-0 rounded-lg max-w-[300px] "
+        className="flex flex-col gap-y-4 bg-white  shadow-2xl lg:px-4 md:py-0 rounded-lg max-w-[300px] h-[500px] "
         onMouseEnter={handleHover}
         onMouseLeave={handleHover}
       >
